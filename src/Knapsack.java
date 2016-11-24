@@ -57,8 +57,6 @@ public class Knapsack {
     public void item_backtracking() {
         int value_sum = 0;
         int weight_sum = 0;
-        int i = 0;
-        boolean flag = true;
 
         for(int j = item.size()-1; j >=0; j--) {
             int size = j-1;
@@ -66,7 +64,7 @@ public class Knapsack {
                 composed_item.add(item.get(j));
                 value_sum += item.get(j).value;
                 weight_sum += item.get(j).weight;
-                for(i = size; i >= 0; i--) {
+                for(int i = size; i >= 0; i--) {
                     if(value_sum <= max && weight_sum <= input_weight) {
                         if(value_sum + item.get(i).value <= max && weight_sum + item.get(i).weight <= input_weight) {
                             composed_item.add(item.get(i));
@@ -77,7 +75,6 @@ public class Knapsack {
                 }
 
                 if(value_sum == max && weight_sum <= input_weight) {
-                    flag = false;
                     j = -1;
                     break;
                 }
